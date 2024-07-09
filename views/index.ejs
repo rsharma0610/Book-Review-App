@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Notes</title>
+</head>
+<body>
+    <h1>Book Reviews</h1>
+    <ul>
+        <li><a href="/create">Create New Note</a></li>
+        <div id="main_container">
+            <% for(let i = 0; i < reviews.length; i++){%>
+                <div id="review_container">
+                    <h3><%= reviews[i].title %></h3>
+                    <p><%= reviews[i].author %></p>
+                    <p><%= reviews[i].review %></p>
+                    <p><%= reviews[i].rating %></p>
+                    <p><%= reviews[i].date %></p>
+                </div>
+            <%}%>
+        </div>
+    </ul>
+</body>
+</html>
