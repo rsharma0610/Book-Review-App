@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 let currentUserId = 0;
-
+//Validates whther or not the credentials entered match an existing user and sets the currentUserId variable if valid
 async function validUser(username, password){
     const query = await db.query("SELECT id, username, password FROM users WHERE username=$1 AND password=$2", [username, password]);
     if(query.rows.length !== 0){
@@ -27,7 +27,7 @@ async function validUser(username, password){
     }
     return false;
 }
-
+//Fetches all the book reviews for a specific user
 async function getReviews(id){
     const query = await db.query(
         "SELECT books.title, books.review, books.rating, books.date, users.name FROM books JOIN users ON books.userId = users.id WHERE users.id = $1;",
@@ -48,6 +48,16 @@ app.get("/registration", (req, res) => {
 app.get("/create", (req, res) => {
     res.render("create.ejs");
 });
+//Gets the reviews when the user uses the navigation tools
+app.get("/reviews", async (req, res) => {
+    var reviews = await getReviews(currentUserId);
+    res.render("index.ejs", {reviews: reviews});
+});
+//Handles signout requests
+app.get("/signout", (req, res) => {
+    currentUserId = 0;
+    res.redirect("/");
+})
 //Handles login requests
 app.post("/login", async (req, res) => {
     const userExists = await validUser(req.body.username, req.body.password);

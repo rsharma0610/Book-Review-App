@@ -5,16 +5,75 @@
     flex-wrap: wrap;
     gap: 20px;
 }
-.review_container{
+.review_container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start; 
     align-items: center;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     border: 5px solid black;
-    padding: 10px; /* Add padding if needed */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    overflow: scroll; /* Hide any overflowing content */
-    text-align: center; /* Center-align text */
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: scroll;
+    text-align: center;
 }
+.review_container > * {
+    margin: 5px 0; /* Add custom margin as needed */
+}
+.review_container .review_body {
+    text-align: left; /* Override to left-align text for elements with class review_body */
+    align-self: stretch; /* Ensure the element stretches to the full container width */
+}
+.review_container .review_stats {
+    text-align: left; /* Override to left-align text for elements with class review_body */
+    align-self: stretch; /* Ensure the element stretches to the full container width */
+}
+footer {
+    background-color: black; /* Black background */
+    color: white; /* White text */
+    padding: 20px; /* Padding around the content */
+    text-align: center; /* Center-align text */
+    font-family: Arial, sans-serif; /* Set a clean font */
+}
+
+footer p {
+    margin: 10px 0; /* Space out the paragraphs */
+}
+
+footer p:first-child {
+    font-size: 1.2em; /* Slightly larger font for the author */
+    font-weight: bold; /* Bold the author name */
+}
+
+footer p:last-child {
+    font-style: italic; /* Italicize the date */
+}
+.menu_bar {
+    display: flex;
+    justify-content: space-between; /* Distribute space between items */
+    background-color: black; /* Black background */
+    padding: 10px 20px; /* Padding around the menu */
+    list-style: none; /* Remove default list styling */
+    margin: 10; /* Remove default margin */
+}
+
+.menu_bar li {
+    display: inline; /* Display list items inline */
+}
+
+.menu_bar a {
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline from links */
+    margin: 0 15px; /* Space out the links */
+    font-family: Arial, sans-serif; /* Set a clean font */
+}
+
+.menu_bar .signout {
+    margin-left: auto; /* Push signout link to the right */
+}
+
+.menu_bar a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
+

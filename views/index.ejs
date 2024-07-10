@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Notes</title>
-    <link rel="stylesheet" href="styles/main.css">
-</head>
-<body>
-    <h1>Book Reviews</h1>
-    <ul>
-        <li><a href="/create">Create New Note</a></li>
+<%- include("partials/header.ejs")%>
         <form action="/sort" method="POST" id="reviewSort">
             <label for="sortType">Sort Reviews:</label>
             <select name="sortType" id="sortType">
@@ -24,12 +13,10 @@
                 <div class="review_container">
                     <h3><%= reviews[i].title %></h3>
                     <p><%= reviews[i].author %></p>
-                    <p><%= reviews[i].review %></p>
-                    <p><%= reviews[i].rating %></p>
-                    <p><%= reviews[i].date %></p>
+                    <p class="review_body"><%= reviews[i].review %></p>
+                    <p class="review_stats"><b>Rating:</b> <%= reviews[i].rating %></p>
+                    <p class="review_stats"><b>Review Date:</b> <%= reviews[i].date %></p>
                 </div>
             <%}%>
-        </div>
-    </ul>
-</body>
-</html>
+        </div><br><br>
+<%- include("partials/footer.ejs")%>   
