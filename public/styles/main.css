@@ -17,7 +17,14 @@
     box-sizing: border-box;
     overflow: scroll;
     text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth hover effect */
 }
+
+.review_container:hover {
+    background-color: #b0aeae; /* Light gray background on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Add a subtle shadow on hover */
+}
+
 .review_container > * {
     margin: 5px 0; /* Add custom margin as needed */
 }
