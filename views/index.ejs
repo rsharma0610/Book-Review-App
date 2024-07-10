@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Notes</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
     <h1>Book Reviews</h1>
     <ul>
         <li><a href="/create">Create New Note</a></li>
-        <div id="main_container">
+        <form action="/sort" method="POST" id="reviewSort">
+            <label for="sortType">Sort Reviews:</label>
+            <select name="sortType" id="sortType">
+                <option value="date">Most Recent</option>
+                <option value="rating">Rating</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+
+        <div class="main_container">
             <% for(let i = 0; i < reviews.length; i++){%>
-                <div id="review_container">
+                <div class="review_container">
                     <h3><%= reviews[i].title %></h3>
                     <p><%= reviews[i].author %></p>
                     <p><%= reviews[i].review %></p>

@@ -83,8 +83,17 @@ app.post("/publish", async(req, res) => {
         await db.query("INSERT INTO books (userId, title, author, review, rating) VALUES ($1, $2, $3, $4, $5);",
         [currentUserId, req.body.title, req.body.author, req.body.review, req.body.rating]);
     }catch(error){}
-    res.redirect("/create");
+    
+    res.render("index.ejs", {reviews: reviews});
 })
+//Sorts the reviews, make sure to update the sort type displayed in the index.ejs file
+app.post("/sort", async (req, res) => {
+    const sort = req.body.sortType;
+    const query = await db.query(
+        `SELECT books.title, books.review, books.rating, books.date, users.name FROM books JOIN users ON books.userId = users.id WHERE users.id = $1 ORDER BY books.${sort} DESC;`,
+        [currentUserId]);
+    res.render("index.ejs", {reviews: query.rows});
+});
 //Determines what port the app is launched
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
